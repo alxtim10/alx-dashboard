@@ -39,7 +39,7 @@ const mainNav: NavItem[] = [
 
 const contentNav: NavItem[] = [
   {
-    label: "Homepage",
+    label: "Home",
     icon: Layers,
     children: [
       { label: "Hero Slides",       href: "/content/homepage/hero-slides",  icon: Image },
@@ -338,7 +338,7 @@ export function Sidebar() {
           {/* Content */}
           {!collapsed && (
             <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-widest text-sidebar-foreground/40">
-              Content
+              Pages
             </p>
           )}
           <NavSection items={contentNav} collapsed={collapsed} pathname={pathname} />
