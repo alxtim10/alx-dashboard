@@ -148,10 +148,6 @@ function NavAccordion({
 
   const [open, setOpen] = React.useState(isChildActive)
 
-  React.useEffect(() => {
-    if (isChildActive) setOpen(true)
-  }, [isChildActive])
-
   if (collapsed) {
     return (
       <Tooltip>

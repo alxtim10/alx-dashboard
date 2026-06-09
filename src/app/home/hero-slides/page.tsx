@@ -1,10 +1,15 @@
+'use client'
 import { Topbar } from "@/components/topbar";
 import { Button } from "@/components/ui/button";
 import { heroSlides } from "@/constants";
 import { Plus, Search, Filter, Edit, Trash } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function HeroSlidesPage() {
+
+  const router = useRouter();
+
   return (
     <main className="flex flex-col overflow-auto">
       <Topbar title="Hero Slides" description="Manage all your slides" />
@@ -23,6 +28,9 @@ export default function HeroSlidesPage() {
               Filter
             </Button>
             <Button
+              onClick={() => {
+                router.push('/home/hero-slides/add')
+              }}
               size="sm"
               className="gap-2 bg-sidebar-primary hover:bg-sidebar-primary/90 text-white"
             >
