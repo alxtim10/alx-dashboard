@@ -1,4 +1,3 @@
-
 import {
   LayoutDashboard, FileText, Settings, Layers,
   Globe, Users, Image, AlignLeft, Star,
@@ -9,12 +8,16 @@ export const heroSlides: HeroSlide[] = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1758035453658-9268bbaf8e29?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    mobileImage: "https://images.unsplash.com/photo-1758035453658-9268bbaf8e29?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     headline: "We Build Solutions That Matter",
     subheadline: "Delivering innovative technology and consulting services to help your business grow",
     ctaLabel: "Discover Our Services",
     ctaUrl: "/services",
     order: 1,
+    alt: "Hero Slide 1",
     active: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   },
   {
     id: 2,
@@ -22,9 +25,12 @@ export const heroSlides: HeroSlide[] = [
     headline: "10 Years of Trusted Partnership",
     subheadline: "Over 200 clients across Southeast Asia trust us to deliver results on time, every time",
     ctaLabel: "See Our Story",
-    ctaUrl: "/about",
+    ctaExternal: "https://www.google.com",
     order: 2,
+    alt: "Hero Slide 2",
     active: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   },
 ];
 

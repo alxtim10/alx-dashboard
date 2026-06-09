@@ -22,7 +22,10 @@ export default function HeroSlidesPage() {
               <Filter className="h-3.5 w-3.5" />
               Filter
             </Button>
-            <Button size="sm" className="gap-2 bg-sidebar-primary hover:bg-sidebar-primary/90 text-white">
+            <Button
+              size="sm"
+              className="gap-2 bg-sidebar-primary hover:bg-sidebar-primary/90 text-white"
+            >
               <Plus className="h-3.5 w-3.5" />
               New Slide
             </Button>
@@ -36,7 +39,7 @@ export default function HeroSlidesPage() {
                   Thumbnail
                 </th>
                 <th className="text-left px-6 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden md:table-cell">
-                  Headline
+                  Mobile Thumbnail
                 </th>
                 <th className="text-left px-6 py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden md:table-cell">
                   Subheadline
@@ -64,7 +67,7 @@ export default function HeroSlidesPage() {
                   key={slide.id}
                   className="hover:bg-muted/30 transition-colors"
                 >
-                  <td className="p-2 rounded-lg">
+                  <td className="p-2 rounded-lg text-center">
                     <Image
                       src={slide.image}
                       width={200}
@@ -73,6 +76,19 @@ export default function HeroSlidesPage() {
                       className="rounded-lg"
                     />
                   </td>
+                  {slide.mobileImage ? (
+                    <td className="p-2 rounded-lg text-center">
+                      <Image
+                        src={slide.mobileImage}
+                        width={200}
+                        height={100}
+                        alt={slide.headline}
+                        className="rounded-lg"
+                      />
+                    </td>
+                  ) : (
+                    <td className="text-center">No Image</td>
+                  )}
                   <td className="px-6 py-4 text-muted-foreground hidden md:table-cell">
                     {slide.headline}
                   </td>
@@ -83,13 +99,17 @@ export default function HeroSlidesPage() {
                     {slide.ctaLabel}
                   </td>
                   <td className="px-6 py-4 text-muted-foreground hidden md:table-cell line-clamp-2 max-w-sm">
-                    {slide.ctaUrl}
+                    {slide.ctaUrl || slide.ctaExternal}
                   </td>
                   <td className="px-6 py-4 text-muted-foreground hidden md:table-cell text-center">
                     {slide.order}
                   </td>
                   <td className="px-6 py-4 hidden md:table-cell text-center text-white">
-                    <span className={`${slide.active ? 'bg-green-500' : 'bg-red-500'} px-2 py-1 rounded-md`}>{slide.active ? "Active" : "Inactive"}</span>
+                    <span
+                      className={`${slide.active ? "bg-green-500" : "bg-red-500"} px-2 py-1 rounded-md`}
+                    >
+                      {slide.active ? "Active" : "Inactive"}
+                    </span>
                   </td>
                   <td className="px-6 py-4 text-muted-foreground hidden md:table-cell">
                     <div className="flex items-center justify-center gap-2">
