@@ -42,11 +42,11 @@ const contentNav: NavItem[] = [
     label: "Home",
     icon: Layers,
     children: [
-      { label: "Hero Slides",       href: "/content/homepage/hero-slides",  icon: Image },
-      { label: "Stats",             href: "/content/homepage/stats",         icon: BarChart3 },
-      { label: "Services Preview",  href: "/content/homepage/services",      icon: Star },
-      { label: "Testimonials",      href: "/content/homepage/testimonials",  icon: MessageSquare },
-      { label: "Page SEO",          href: "/content/homepage/seo",           icon: Globe },
+      { label: "Hero Slides",       href: "/home/hero-slides",  icon: Image },
+      { label: "Stats",             href: "/home/stats",         icon: BarChart3 },
+      { label: "Services Preview",  href: "/home/services",      icon: Star },
+      { label: "Testimonials",      href: "/home/testimonials",  icon: MessageSquare },
+      { label: "Page SEO",          href: "/home/seo",           icon: Globe },
     ],
   },
   {
