@@ -25,9 +25,9 @@ export default function RootLayout({
     <html lang="en" className={cn(poppins.className, "font-sans", geist.variable)}>
       <body className="antialiased font-sans">
         <SidebarProvider>
-          <div className="flex overflow-hidden bg-background">
+          <div className="flex h-screen overflow-hidden bg-background">
             <Sidebar />
-            <div className="flex flex-1 flex-col overflow-hidden">
+            <div className="flex flex-1 flex-col overflow-y-auto">
               {children}
             </div>
           </div>
