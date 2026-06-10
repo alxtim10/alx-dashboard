@@ -121,7 +121,7 @@ export default function HeroSlidesPage() {
                   </td>
                   <td className="px-6 py-4 text-muted-foreground hidden md:table-cell">
                     <div className="flex items-center justify-center gap-2">
-                      <button>
+                      <button onClick={() => router.push(`/home/hero-slides/${slide.id}/edit`)}>
                         <Edit className="w-4 h-4" />
                       </button>
                       <button>
