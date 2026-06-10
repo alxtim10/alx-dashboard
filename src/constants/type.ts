@@ -26,3 +26,18 @@ type NavItem = {
   icon: React.ElementType
   children?: NavChild[]
 }
+
+type StatsPage = {
+  title: string;
+  statistics: Stat[];
+}
+
+type Stat = {
+  id: number;
+  icon: string;
+  value: string;
+  description: string;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+}

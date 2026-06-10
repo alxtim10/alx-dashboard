@@ -90,3 +90,27 @@ export const bottomNav: NavItem[] = [
   { label: "Users",    href: "/users",    icon: Users },
   { label: "Settings", href: "/settings", icon: Settings },
 ]
+
+export const statsPage: StatsPage = {
+  title: "Explore Our Impressive Performance and Achievements",
+  statistics: [
+    {
+      id: 1,
+      icon: 'https://itsec.asia/storage/photos/shares/projects.ad2150ebd5055caa.svg',
+      value: "100",
+      description: "Clients Served",
+      order: 1,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+    {
+      id: 2,
+      icon: 'https://itsec.asia/storage/photos/shares/projects.ad2150ebd5055caa.svg',
+      value: "500",
+      description: "Projects Completed",
+      order: 2,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    },
+  ],
+}
