@@ -217,7 +217,7 @@ export default function PageSEO() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-background/95 backdrop-blur px-6 py-4">
+      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-background/95 backdrop-blur px-6 py-[13.5px]">
         <div>
           <h1 className="text-sm font-semibold text-foreground">Page SEO</h1>
           <p className="text-xs text-muted-foreground">Homepage &rsaquo; Page SEO</p>
