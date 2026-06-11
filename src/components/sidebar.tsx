@@ -44,7 +44,8 @@ const contentNav: NavItem[] = [
     children: [
       { label: "Hero Slides",       href: "/home/hero-slides",  icon: Image },
       { label: "Stats",             href: "/home/stats",         icon: BarChart3 },
-      { label: "Services Preview",  href: "/home/services",      icon: Star },
+      { label: "Services Preview",  href: "/home/services-preview",      icon: Star },
+      { label: "Partners", href: "/home/partners", icon: Building2 },
       { label: "Testimonials",      href: "/home/testimonials",  icon: MessageSquare },
       { label: "Page SEO",          href: "/home/seo",           icon: Globe },
     ],
