@@ -289,7 +289,7 @@ export default function HeroSlideForm({ id }: HeroSlideFormProps) {
 
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-full bg-background">
       {/* Header */}
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-background/95 backdrop-blur px-6 py-4">
         <div className="flex items-center gap-3">
@@ -321,7 +321,7 @@ export default function HeroSlideForm({ id }: HeroSlideFormProps) {
       </div>
 
       {/* Two-column body */}
-      <div className="flex-1 px-6 py-8 w-full max-w-7xl mx-auto">
+      <div className="px-6 py-8 w-full max-w-7xl mx-auto">
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-8 items-start">
           {/* Left — form */}
           <form onSubmit={handleSubmit} className="space-y-6">
