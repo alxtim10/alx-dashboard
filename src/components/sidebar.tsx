@@ -15,7 +15,83 @@ import {
 } from "./ui/tooltip"
 import { Separator } from "./ui/separator"
 import { Button } from "./ui/button"
-import { bottomNav, contentNav, globalNav, mainNav } from "@/constants"
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type NavChild = {
+  label: string
+  href: string
+  icon: React.ElementType
+}
+
+type NavItem = {
+  label: string
+  href?: string
+  icon: React.ElementType
+  children?: NavChild[]
+}
+
+// ─── Nav config ───────────────────────────────────────────────────────────────
+
+const mainNav: NavItem[] = [
+  { label: "Dashboard", href: "/", icon: LayoutDashboard },
+]
+
+const contentNav: NavItem[] = [
+  {
+    label: "Home",
+    icon: Layers,
+    children: [
+      { label: "Hero Slides", href: "/home/hero-slides", icon: Image },
+      { label: "Stats", href: "/home/stats", icon: BarChart3 },
+      { label: "Services Preview", href: "/home/services-preview", icon: Star },
+      { label: "Partners", href: "/home/partners", icon: Building2 },
+      { label: "Testimonials", href: "/home/testimonials", icon: MessageSquare },
+      { label: "Page SEO", href: "/home/seo", icon: Globe },
+    ],
+  },
+  // {
+  //   label: "About",
+  //   icon: Building2,
+  //   children: [
+  //     { label: "Company Story",   href: "/content/about/story",      icon: AlignLeft },
+  //     { label: "Mission & Vision",href: "/content/about/mission",    icon: Star },
+  //     { label: "Team Members",    href: "/content/about/team",       icon: Users },
+  //     { label: "Milestones",      href: "/content/about/milestones", icon: BarChart3 },
+  //     { label: "Page SEO",        href: "/content/about/seo",        icon: Globe },
+  //   ],
+  // },
+  // {
+  //   label: "Services",
+  //   icon: FileText,
+  //   children: [
+  //     { label: "Service List", href: "/content/services/list", icon: AlignLeft },
+  //     { label: "Page SEO",     href: "/content/services/seo",  icon: Globe },
+  //   ],
+  // },
+  // {
+  //   label: "Contact",
+  //   icon: Phone,
+  //   children: [
+  //     { label: "Contact Info",       href: "/content/contact/info",      icon: AlignLeft },
+  //     { label: "Office Locations",   href: "/content/contact/locations", icon: Building2 },
+  //     { label: "Page SEO",           href: "/content/contact/seo",       icon: Globe },
+  //   ],
+  // },
+]
+
+const globalNav: NavItem[] = [
+  { label: "Site Settings", href: "/global/settings", icon: Settings },
+  { label: "Navigation", href: "/global/navigation", icon: Layers },
+  { label: "Footer", href: "/global/footer", icon: AlignLeft },
+]
+
+const bottomNav: NavItem[] = [
+  { label: "Users", href: "/users", icon: Users },
+  { label: "Settings", href: "/settings", icon: Settings },
+]
+
+// ─── Leaf link (no children) ──────────────────────────────────────────────────
 
 function NavLink({
   item,
@@ -26,8 +102,8 @@ function NavLink({
   collapsed: boolean
   pathname: string
 }) {
-  const isActive = pathname === item.href
   const Icon = item.icon
+  const isActive = pathname === item.href
 
   const linkContent = (
     <Link
@@ -35,20 +111,12 @@ function NavLink({
       className={cn(
         "group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium",
         "transition-colors duration-150",
-        "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
         isActive
-          ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
-          : "text-sidebar-foreground/70"
+          ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+          : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
       )}
     >
-      <Icon
-        className={cn(
-          "h-4 w-4 shrink-0",
-          isActive
-            ? "text-sidebar-primary-foreground"
-            : "text-sidebar-foreground/60 group-hover:text-sidebar-accent-foreground"
-        )}
-      />
+      <Icon className={cn("h-4 w-4 shrink-0 text-sidebar-foreground/60 group-hover:text-sidebar-accent-foreground", isActive && "text-sidebar-accent-foreground")} />
       {!collapsed && <span className="flex-1 truncate">{item.label}</span>}
     </Link>
   )
@@ -79,26 +147,16 @@ function NavAccordion({
   const Icon = item.icon
   const isChildActive = item.children?.some((c) => pathname === c.href) ?? false
 
-  // Auto-open if a child is active
   const [open, setOpen] = React.useState(isChildActive)
 
-  // Re-open when navigating directly to a child route
-  React.useEffect(() => {
-    if (isChildActive) setOpen(true)
-  }, [isChildActive])
-
   if (collapsed) {
-    // In collapsed mode render a tooltip that lists children
     return (
       <Tooltip>
         <TooltipTrigger asChild>
           <button
             className={cn(
               "group flex w-full items-center justify-center rounded-lg px-3 py-2.5",
-              "transition-colors duration-150 hover:bg-sidebar-accent",
-              isChildActive
-                ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
-                : "text-sidebar-foreground/70"
+              "transition-colors duration-150 text-sidebar-foreground/70 hover:bg-sidebar-accent"
             )}
           >
             <Icon className="h-4 w-4 shrink-0" />
@@ -109,20 +167,22 @@ function NavAccordion({
             {item.label}
           </div>
           <div className="py-1">
-            {item.children?.map((child) => (
-              <Link
-                key={child.href}
-                href={child.href}
-                className={cn(
-                  "flex items-center gap-2 px-3 py-1.5 text-sm",
-                  "hover:bg-accent transition-colors",
-                  pathname === child.href ? "text-primary font-medium" : "text-foreground/70"
-                )}
-              >
-                <child.icon className="h-3.5 w-3.5 shrink-0" />
-                {child.label}
-              </Link>
-            ))}
+            {item.children?.map((child) => {
+              const isActive = pathname === child.href
+              return (
+                <Link
+                  key={child.href}
+                  href={child.href}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-1.5 text-sm transition-colors hover:bg-accent",
+                    isActive ? "text-foreground font-medium" : "text-foreground/70"
+                  )}
+                >
+                  <child.icon className="h-3.5 w-3.5 shrink-0" />
+                  {child.label}
+                </Link>
+              )
+            })}
           </div>
         </TooltipContent>
       </Tooltip>
@@ -131,25 +191,15 @@ function NavAccordion({
 
   return (
     <div>
-      {/* Accordion trigger */}
+      {/* Accordion trigger — no active state, hover only */}
       <button
         onClick={() => setOpen((v) => !v)}
         className={cn(
           "group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium",
-          "transition-colors duration-150 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-          isChildActive
-            ? "text-sidebar-foreground"
-            : "text-sidebar-foreground/70"
+          "transition-colors duration-150 text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
         )}
       >
-        <Icon
-          className={cn(
-            "h-4 w-4 shrink-0",
-            isChildActive
-              ? "text-sidebar-foreground group-hover:text-sidebar-accent-foreground"
-              : "text-sidebar-foreground/60 group-hover:text-sidebar-accent-foreground"
-          )}
-        />
+        <Icon className="h-4 w-4 shrink-0 text-sidebar-foreground/60 group-hover:text-sidebar-accent-foreground" />
         <span className="flex-1 truncate text-left">{item.label}</span>
         <ChevronDown
           className={cn(
@@ -167,22 +217,24 @@ function NavAccordion({
         )}
       >
         <div className="ml-3 mt-0.5 space-y-0.5 border-l border-sidebar-border pl-3 pb-1">
-          {item.children?.map((child) => (
-            <Link
-              key={child.href}
-              href={child.href}
-              className={cn(
-                "group flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm",
-                "transition-colors duration-150 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-                pathname === child.href
-                  ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                  : "text-sidebar-foreground/60"
-              )}
-            >
-              <child.icon className="h-3.5 w-3.5 shrink-0" />
-              <span className="truncate">{child.label}</span>
-            </Link>
-          ))}
+          {item.children?.map((child) => {
+            const isActive = pathname === child.href
+            return (
+              <Link
+                key={child.href}
+                href={child.href}
+                className={cn(
+                  "group flex items-center gap-2.5 rounded-md px-2.5 py-2 text-sm transition-colors duration-150",
+                  isActive
+                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                    : "text-sidebar-foreground/60 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                )}
+              >
+                <child.icon className="h-3.5 w-3.5 shrink-0" />
+                <span className="truncate">{child.label}</span>
+              </Link>
+            )
+          })}
         </div>
       </div>
     </div>
@@ -283,7 +335,7 @@ export function Sidebar() {
           {/* Content */}
           {!collapsed && (
             <p className="mb-1.5 px-3 text-[10px] font-semibold uppercase tracking-widest text-sidebar-foreground/40">
-              Content
+              Pages
             </p>
           )}
           <NavSection items={contentNav} collapsed={collapsed} pathname={pathname} />

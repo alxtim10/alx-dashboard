@@ -1,12 +1,17 @@
 type HeroSlide = {
   id: number;
   image: string;
+  mobileImage?: string;
   headline: string;
   subheadline: string;
   ctaLabel: string;
-  ctaUrl: string;
+  ctaUrl?: string;
+  ctaExternal?: string;
+  alt?: string;
   order: number;
   active: boolean;
+  createdAt: string;
+  updatedAt: string;
 };
 
 type NavChild = {
@@ -20,4 +25,33 @@ type NavItem = {
   href?: string
   icon: React.ElementType
   children?: NavChild[]
+}
+
+type StatsPage = {
+  title: string;
+  statistics: Stat[];
+}
+
+type Stat = {
+  id: number;
+  icon: string;
+  value: string;
+  description: string;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+type Testimonial = {
+  id: number;
+  avatar: string;
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  rating: number;
+  active: boolean;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -45,8 +45,8 @@ export function Topbar({ title, description }: TopbarProps) {
           <Bell className="h-4 w-4" />
         </Button>
 
-        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white text-xs font-semibold cursor-pointer">
-          JD
+        <div className="h-8 w-8 rounded-full bg-gradient-to-br bg-[#0D80DE] flex items-center justify-center text-white text-xs font-semibold cursor-pointer">
+          User
         </div>
       </div>
     </header>
