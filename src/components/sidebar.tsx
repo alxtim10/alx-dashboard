@@ -42,52 +42,52 @@ const contentNav: NavItem[] = [
     label: "Home",
     icon: Layers,
     children: [
-      { label: "Hero Slides",       href: "/home/hero-slides",  icon: Image },
-      { label: "Stats",             href: "/home/stats",         icon: BarChart3 },
-      { label: "Services Preview",  href: "/home/services-preview",      icon: Star },
+      { label: "Hero Slides", href: "/home/hero-slides", icon: Image },
+      { label: "Stats", href: "/home/stats", icon: BarChart3 },
+      { label: "Services Preview", href: "/home/services-preview", icon: Star },
       { label: "Partners", href: "/home/partners", icon: Building2 },
-      { label: "Testimonials",      href: "/home/testimonials",  icon: MessageSquare },
-      { label: "Page SEO",          href: "/home/seo",           icon: Globe },
+      { label: "Testimonials", href: "/home/testimonials", icon: MessageSquare },
+      { label: "Page SEO", href: "/home/seo", icon: Globe },
     ],
   },
-  {
-    label: "About",
-    icon: Building2,
-    children: [
-      { label: "Company Story",   href: "/content/about/story",      icon: AlignLeft },
-      { label: "Mission & Vision",href: "/content/about/mission",    icon: Star },
-      { label: "Team Members",    href: "/content/about/team",       icon: Users },
-      { label: "Milestones",      href: "/content/about/milestones", icon: BarChart3 },
-      { label: "Page SEO",        href: "/content/about/seo",        icon: Globe },
-    ],
-  },
-  {
-    label: "Services",
-    icon: FileText,
-    children: [
-      { label: "Service List", href: "/content/services/list", icon: AlignLeft },
-      { label: "Page SEO",     href: "/content/services/seo",  icon: Globe },
-    ],
-  },
-  {
-    label: "Contact",
-    icon: Phone,
-    children: [
-      { label: "Contact Info",       href: "/content/contact/info",      icon: AlignLeft },
-      { label: "Office Locations",   href: "/content/contact/locations", icon: Building2 },
-      { label: "Page SEO",           href: "/content/contact/seo",       icon: Globe },
-    ],
-  },
+  // {
+  //   label: "About",
+  //   icon: Building2,
+  //   children: [
+  //     { label: "Company Story",   href: "/content/about/story",      icon: AlignLeft },
+  //     { label: "Mission & Vision",href: "/content/about/mission",    icon: Star },
+  //     { label: "Team Members",    href: "/content/about/team",       icon: Users },
+  //     { label: "Milestones",      href: "/content/about/milestones", icon: BarChart3 },
+  //     { label: "Page SEO",        href: "/content/about/seo",        icon: Globe },
+  //   ],
+  // },
+  // {
+  //   label: "Services",
+  //   icon: FileText,
+  //   children: [
+  //     { label: "Service List", href: "/content/services/list", icon: AlignLeft },
+  //     { label: "Page SEO",     href: "/content/services/seo",  icon: Globe },
+  //   ],
+  // },
+  // {
+  //   label: "Contact",
+  //   icon: Phone,
+  //   children: [
+  //     { label: "Contact Info",       href: "/content/contact/info",      icon: AlignLeft },
+  //     { label: "Office Locations",   href: "/content/contact/locations", icon: Building2 },
+  //     { label: "Page SEO",           href: "/content/contact/seo",       icon: Globe },
+  //   ],
+  // },
 ]
 
 const globalNav: NavItem[] = [
-  { label: "Site Settings", href: "/global/settings",   icon: Settings },
-  { label: "Navigation",    href: "/global/navigation", icon: Layers },
-  { label: "Footer",        href: "/global/footer",     icon: AlignLeft },
+  { label: "Site Settings", href: "/global/settings", icon: Settings },
+  { label: "Navigation", href: "/global/navigation", icon: Layers },
+  { label: "Footer", href: "/global/footer", icon: AlignLeft },
 ]
 
 const bottomNav: NavItem[] = [
-  { label: "Users",    href: "/users",    icon: Users },
+  { label: "Users", href: "/users", icon: Users },
   { label: "Settings", href: "/settings", icon: Settings },
 ]
 
