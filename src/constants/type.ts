@@ -41,3 +41,17 @@ type Stat = {
   createdAt: string;
   updatedAt: string;
 }
+
+type Testimonial = {
+  id: number;
+  avatar: string;
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  rating: number;
+  active: boolean;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+}
